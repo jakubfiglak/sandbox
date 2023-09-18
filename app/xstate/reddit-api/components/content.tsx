@@ -1,7 +1,7 @@
 "use client";
 
 import { useMachine } from "@xstate/react";
-import { redditMachine } from "./machine";
+import { redditMachine } from "../machines/reddit";
 import {
   Select,
   SelectContent,
@@ -10,16 +10,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Subreddit } from "./subreddit";
 
 const subreddits = ["frontend", "reactjs", "vuejs"];
 
 export const Content = () => {
   const [current, send] = useMachine(redditMachine);
-  const { subreddit, posts } = current.context;
+  const { subreddit } = current.context;
 
   return (
-    <div>
-      <div>
+    <div className="h-full w-full p-20">
+      <div className="mb-4">
         <Select
           onValueChange={(value) => {
             send({ type: "SELECT", name: value });
@@ -41,17 +42,7 @@ export const Content = () => {
           </SelectContent>
         </Select>
       </div>
-      <section>
-        <h1>{current.matches("idle") ? "Select a subreddit" : subreddit}</h1>
-        {current.matches({ selected: "loading" }) && <div>Loading...</div>}
-        {current.matches({ selected: "loaded" }) && (
-          <ul>
-            {posts.map((post) => (
-              <li key={post.title}>{post.title}</li>
-            ))}
-          </ul>
-        )}
-      </section>
+      {subreddit && <Subreddit name={subreddit} key={subreddit} />}
     </div>
   );
 };
