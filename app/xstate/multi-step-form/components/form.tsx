@@ -2,6 +2,7 @@
 
 import { useMachine } from "@xstate/react";
 import { BeneficiaryForm } from "./beneficiary-form";
+import { DateForm } from "./date-form";
 import { multiStepFormMachine } from "../machine";
 
 export const Form = () => {
@@ -17,12 +18,17 @@ export const Form = () => {
 
     case "enteringDate":
       return (
-        <div>
-          <pre>{JSON.stringify(state.context, null, 2)}</pre>
-          <button onClick={() => send("CONFIRM_DATE")}>next</button>
-        </div>
+        <DateForm
+          onSubmit={(data) => send("CONFIRM_DATE", { info: data })}
+          onBackClick={() => send("BACK")}
+        />
       );
 
     default:
+      return (
+        <div>
+          <pre>{JSON.stringify(state.context, null, 2)}</pre>
+        </div>
+      );
   }
 };
