@@ -1,17 +1,26 @@
 import { assign, createMachine } from "xstate";
 
-function invokeFetchSubreddit<Context extends { subreddit: string }>(
-  context: Context
-) {
-  const { subreddit } = context;
+type SubredditContext = {
+  subreddit: string;
+  posts: any[] | null;
+  lastUpdated: number | null;
+};
 
+type SubredditEvent = { type: "REFRESH" } | { type: "RETRY" };
+
+type SubredditState =
+  | { value: "loading"; context: SubredditContext }
+  | { value: "loaded"; context: SubredditContext }
+  | { value: "failure"; context: SubredditContext };
+
+async function fetchSubreddit(subreddit: string) {
   return fetch(`https://www.reddit.com/r/${subreddit}.json`)
     .then((response) => response.json())
     .then((json) => json.data.children.map((child: any) => child.data));
 }
 
 export const createSubredditMachine = (subreddit: string) => {
-  return createMachine({
+  return createMachine<SubredditContext, SubredditEvent, SubredditState>({
     id: "subreddit",
     initial: "loading",
     context: {
@@ -23,7 +32,7 @@ export const createSubredditMachine = (subreddit: string) => {
       loading: {
         invoke: {
           id: "fetch-subreddit",
-          src: invokeFetchSubreddit,
+          src: (ctx) => fetchSubreddit(ctx.subreddit),
           onDone: {
             target: "loaded",
             actions: assign({

@@ -36,7 +36,8 @@ export const Subreddit = ({ name }: SubredditProps) => {
           <header className="mb-4">
             <h2 className="font-bold text-xl capitalize">{subreddit}</h2>
             <small>
-              Last updated: {new Date(lastUpdated).toDateString()}{" "}
+              Last updated:{" "}
+              {lastUpdated ? new Date(lastUpdated).toDateString() : ""}{" "}
               <button onClick={(_) => send("REFRESH")}>Refresh</button>
             </small>
           </header>
