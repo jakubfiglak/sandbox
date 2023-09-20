@@ -14,6 +14,9 @@ const XStatePage = () => {
           <li>
             <Link href="/xstate/multi-step-form">Multi Step Form</Link>
           </li>
+          <li>
+            <Link href="/xstate/onboarding-flow">Onboarding Flow</Link>
+          </li>
         </ul>
       </nav>
     </div>
