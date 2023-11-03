@@ -9,11 +9,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { type CreateTeamInput } from "../schemas";
-
 type PlayerFieldsProps = {
-  control: Control<CreateTeamInput>;
-  index: number;
+  control: Control<any>;
+  index?: number;
 };
 
 export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
@@ -21,7 +19,9 @@ export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
     <>
       <FormField
         control={control}
-        name={`players.${index}.firstName`}
+        name={
+          typeof index === "number" ? `players.${index}.firstName` : "firstName"
+        }
         render={({ field }) => (
           <FormItem>
             <FormLabel>First Name</FormLabel>
@@ -34,7 +34,9 @@ export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
       />
       <FormField
         control={control}
-        name={`players.${index}.lastName`}
+        name={
+          typeof index === "number" ? `players.${index}.lastName` : "lastName"
+        }
         render={({ field }) => (
           <FormItem>
             <FormLabel>Last Name</FormLabel>
@@ -47,7 +49,7 @@ export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
       />
       <FormField
         control={control}
-        name={`players.${index}.number`}
+        name={typeof index === "number" ? `players.${index}.number` : "number"}
         render={({ field }) => (
           <FormItem>
             <FormLabel>Number</FormLabel>
