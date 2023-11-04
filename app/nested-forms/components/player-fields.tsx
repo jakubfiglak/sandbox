@@ -14,7 +14,6 @@ type PlayerFieldsProps<T extends FieldValues> = {
   firstNameFieldName: FieldPath<T>;
   lastNameFieldName: FieldPath<T>;
   numberFieldName: FieldPath<T>;
-  index?: number;
 };
 
 export const PlayerFields = <T extends FieldValues>({
@@ -22,7 +21,6 @@ export const PlayerFields = <T extends FieldValues>({
   firstNameFieldName,
   lastNameFieldName,
   numberFieldName,
-  index,
 }: PlayerFieldsProps<T>) => {
   return (
     <>
