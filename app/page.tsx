@@ -8,6 +8,9 @@ export default function Home() {
           <li>
             <Link href="/xstate">XState</Link>
           </li>
+          <li>
+            <Link href="/nested-forms">Nested Forms</Link>
+          </li>
         </ul>
       </nav>
     </main>
