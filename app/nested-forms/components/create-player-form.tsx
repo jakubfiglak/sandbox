@@ -27,7 +27,12 @@ export const CreatePlayerForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className="grid gap-4 md:grid-cols-3 flex-1">
-          <PlayerFields control={form.control} />
+          <PlayerFields
+            control={form.control}
+            firstNameFieldName="firstName"
+            lastNameFieldName="lastName"
+            numberFieldName="number"
+          />
         </div>
         <Button type="submit">Submit</Button>
       </form>

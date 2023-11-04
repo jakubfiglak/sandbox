@@ -1,4 +1,4 @@
-import { Control } from "react-hook-form";
+import type { Control, FieldPath, FieldValues } from "react-hook-form";
 
 import {
   FormControl,
@@ -9,19 +9,26 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-type PlayerFieldsProps = {
-  control: Control<any>;
+type PlayerFieldsProps<T extends FieldValues> = {
+  control: Control<T>;
+  firstNameFieldName: FieldPath<T>;
+  lastNameFieldName: FieldPath<T>;
+  numberFieldName: FieldPath<T>;
   index?: number;
 };
 
-export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
+export const PlayerFields = <T extends FieldValues>({
+  control,
+  firstNameFieldName,
+  lastNameFieldName,
+  numberFieldName,
+  index,
+}: PlayerFieldsProps<T>) => {
   return (
     <>
       <FormField
         control={control}
-        name={
-          typeof index === "number" ? `players.${index}.firstName` : "firstName"
-        }
+        name={firstNameFieldName}
         render={({ field }) => (
           <FormItem>
             <FormLabel>First Name</FormLabel>
@@ -34,9 +41,7 @@ export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
       />
       <FormField
         control={control}
-        name={
-          typeof index === "number" ? `players.${index}.lastName` : "lastName"
-        }
+        name={lastNameFieldName}
         render={({ field }) => (
           <FormItem>
             <FormLabel>Last Name</FormLabel>
@@ -49,7 +54,7 @@ export const PlayerFields = ({ control, index }: PlayerFieldsProps) => {
       />
       <FormField
         control={control}
-        name={typeof index === "number" ? `players.${index}.number` : "number"}
+        name={numberFieldName}
         render={({ field }) => (
           <FormItem>
             <FormLabel>Number</FormLabel>

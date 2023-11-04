@@ -65,7 +65,12 @@ export const CreateTeamForm = () => {
               className="flex items-end justify-between gap-4"
             >
               <div className="grid gap-4 md:grid-cols-3 flex-1">
-                <PlayerFields control={form.control} index={index} />
+                <PlayerFields
+                  control={form.control}
+                  firstNameFieldName={`players.${index}.firstName`}
+                  lastNameFieldName={`players.${index}.lastName`}
+                  numberFieldName={`players.${index}.number`}
+                />
               </div>
               <div className="flex items-center gap-2">
                 <Button
