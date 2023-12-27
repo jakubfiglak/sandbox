@@ -11,6 +11,9 @@ export default function Home() {
           <li>
             <Link href="/nested-forms">Nested Forms</Link>
           </li>
+          <li>
+            <Link href="/framer-motion">Framer Motion</Link>
+          </li>
         </ul>
       </nav>
     </main>
