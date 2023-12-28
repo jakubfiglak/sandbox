@@ -6,7 +6,8 @@
     "dev": "next dev -p 7777",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -38,6 +39,12 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "prisma": "5.7.1"
+    "@faker-js/faker": "^8.3.1",
+    "fishery": "^2.2.2",
+    "prisma": "5.7.1",
+    "ts-node": "^10.9.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
