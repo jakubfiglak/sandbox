@@ -11,4 +11,5 @@ export const PostCreateInputFactory = Factory.define<
   author: { connect: { id: transientParams.authorId } },
   title: faker.lorem.sentence(),
   content: faker.lorem.paragraphs(3),
+  commentable: { create: {} },
 }));
