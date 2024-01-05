@@ -14,6 +14,9 @@ export default function Home() {
           <li>
             <Link href="/framer-motion">Framer Motion</Link>
           </li>
+          <li>
+            <Link href="/lottie">Lottie</Link>
+          </li>
         </ul>
       </nav>
     </main>
