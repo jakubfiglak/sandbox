@@ -36,7 +36,7 @@ export const ArticleCard = ({
       </CardHeader>
       <CardContent className="truncate flex-grow">{content}</CardContent>
       <CardFooter>
-        <Link href="#">
+        <Link href={`/prisma/blog/${id}`}>
           <Button variant="link">Read More</Button>
         </Link>
       </CardFooter>
