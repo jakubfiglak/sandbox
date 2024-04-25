@@ -17,7 +17,7 @@ const quillInput = z.object({
 
 type QuillInput = z.infer<typeof quillInput>;
 
-export const Quill = () => {
+const Quill = () => {
   const form = useForm<QuillInput>({
     resolver: zodResolver(quillInput),
     defaultValues: {
@@ -44,3 +44,5 @@ export const Quill = () => {
     </Form>
   );
 };
+
+export default Quill;
