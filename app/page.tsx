@@ -17,6 +17,9 @@ export default function Home() {
           <li>
             <Link href="/quill">Quill</Link>
           </li>
+          <li>
+            <Link href="/auto-form">Auto Form</Link>
+          </li>
         </ul>
       </nav>
     </main>
