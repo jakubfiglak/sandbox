@@ -20,6 +20,9 @@ export default function Home() {
           <li>
             <Link href="/auto-form">Auto Form</Link>
           </li>
+          <li>
+            <Link href="/drag-and-drop">Drag and Drop</Link>
+          </li>
         </ul>
       </nav>
     </main>
